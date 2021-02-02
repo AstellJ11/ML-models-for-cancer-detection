@@ -3,7 +3,12 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-df = pd.read_excel('clinical_dataset.xlsx')
+
+# Read in the data as a pandas dataframe
+def dataImport(fileName):
+    data = pd.read_excel('clinical_dataset.xlsx')
+    print(data)
+    return data
 
 
 # Calculate all summary stats for the selected data to 2dp
@@ -64,7 +69,7 @@ def dataPlotting(dataset):
 
 
 if __name__ == '__main__':
-    print(df)
+    df = dataImport('clinical_dataset.xlsx')
 
     dataSummary('Age', 'age')
     dataSummary('BMI', 'BMI')
