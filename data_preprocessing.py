@@ -8,37 +8,34 @@ pd.options.display.show_dimensions = False  # Remove pandas dataframe dimensions
 
 
 # Read in the data as a pandas dataframe
-def dataImport(fileName):
-    data = pd.read_excel('clinical_dataset.xlsx')
+def dataImport(filename):
+    data = pd.read_excel(filename)
     return data
 
 
 # Calculate all summary stats for the selected data to 2dp
 def dataSummary(columnName, customName):
-    mean = round(df[columnName].mean(), 2)
-    min = round(df[columnName].min(), 2)
-    max = round(df[columnName].max(), 2)
-    median = round(df[columnName].median(), 2)
-    # mode = df[columnName].mode()
-    std = round(df[columnName].std(), 2)
+    dataMean = round(df[columnName].mean(), 2)
+    dataMin = round(df[columnName].min(), 2)
+    datMax = round(df[columnName].max(), 2)
+    dataMedian = round(df[columnName].median(), 2)
+    DataStd = round(df[columnName].std(), 2)
 
     print('------------------', columnName, '------------------')
-    print('The mean of', customName, 'is', mean)
-    print('The minimum of', customName, 'is', min)
-    print('The maximum of', customName, 'is', max)
-    print('The median of', customName, 'is', median)
-    print('The standard deviation of', customName, 'is', std)
+    print('The mean of', customName, 'is', dataMean)
+    print('The minimum of', customName, 'is', dataMin)
+    print('The maximum of', customName, 'is', datMax)
+    print('The median of', customName, 'is', dataMedian)
+    print('The standard deviation of', customName, 'is', DataStd)
     print('-------------------', '-' * len(columnName), '-------------------',
           sep='')  # Ensures the dashes are the same length
-
-    # print(mode)  # Mode kinda weird
     return
 
 
 # Convert list to string
 def listToString(s):
     deli = " / "
-    return (deli.join(s))
+    return deli.join(s)
 
 
 # Find and display the properties of the selected dataset
