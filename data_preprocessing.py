@@ -1,13 +1,15 @@
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import warnings
+
+warnings.simplefilter(action='ignore', category=FutureWarning)  # Suppress non-critical user warning
+pd.options.display.show_dimensions = False  # Remove pandas dataframe dimensions from output display
 
 
 # Read in the data as a pandas dataframe
 def dataImport(fileName):
     data = pd.read_excel('clinical_dataset.xlsx')
-    print(data)
     return data
 
 
@@ -45,8 +47,22 @@ def dataProperties(dataset):
     print('Meaning there are', dataset.size, 'total elements in the dataset.')
     print('Their are', len(dataset.columns), 'features in the dataset, which are:',
           listToString(dataset.columns.values))
-    print('-------------------------------------------')
+    print('----------------------------------------------')
     return
+
+
+# Count the number of missing values in the selected dataset
+def dataMissing(dataset):
+    print('The number of missing values in the dataset is:', sum(dataset.isnull().values.ravel()))
+    print('----------------------------------------------')
+    return
+
+
+# Normalise the data using a min-max normalisation method
+def dataNormalisation(dataset):
+    statusDropped = dataset.drop(['Status'], axis=1)
+    normalised = (statusDropped - statusDropped.min()) / (statusDropped.max() - statusDropped.min())
+    return normalised
 
 
 # Plot a boxplot and density plot for the selected dataset
@@ -70,6 +86,9 @@ def dataPlotting(dataset):
 
 if __name__ == '__main__':
     df = dataImport('clinical_dataset.xlsx')
+    print('------------ The original dataset ------------')
+    print(df)
+    print('----------------------------------------------')
 
     dataSummary('Age', 'age')
     dataSummary('BMI', 'BMI')
@@ -82,5 +101,8 @@ if __name__ == '__main__':
     dataSummary('MCP.1', 'MCP.1')
 
     dataProperties(df)
-
+    dataMissing(df)
+    print('----------- The normalised dataset -----------')
+    print(dataNormalisation(df))
+    print('----------------------------------------------')
     dataPlotting(df)
