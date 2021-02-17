@@ -32,10 +32,15 @@ def dataPreprocessing(dataset):
     return x_train, x_test, y_train, y_test
 
 
+# NOTE:
+# An iteration (max_iter) is a gradient update step
+# An epoch is a pass over the entire dataset
+# https://stackoverflow.com/questions/4752626/epoch-vs-iteration-when-training-neural-networks
+
 # ANN classifier with 2 hidden layers of 500 neurons each
 def ANN_classifier(x_train, x_test, y_train, y_test):
-    ANN_classifier = MLPClassifier(hidden_layer_sizes=(500, 500), activation='logistic', max_iter=100,
-                                   solver='lbfgs', verbose=1, tol=0.000000001, random_state=13)
+    ANN_classifier = MLPClassifier(hidden_layer_sizes=(500, 500), activation='logistic', max_iter=100,  # CHANGE ITER?
+                                   solver='lbfgs', verbose=1, random_state=13)
     ANN_classifier.fit(x_train, y_train)
 
     # Calculate and report accuracy for ANN classifier

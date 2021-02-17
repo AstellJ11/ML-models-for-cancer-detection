@@ -42,8 +42,12 @@ def listToString(s):
 def dataProperties(dataset):
     print('The size of the dataset is', len(dataset), 'rows by', len(dataset.columns), 'columns.')
     print('Meaning there are', dataset.size, 'total elements in the dataset.')
-    print('Their are', len(dataset.columns), 'features in the dataset, which are:',
-          listToString(dataset.columns.values))
+
+    # Remove the status column as is not a feature
+    featuresList = (dataset.columns.values)
+    featuresList = featuresList[:-1]
+    print('Their are', (len(dataset.columns) - 1), 'features in the dataset, which are:',
+          listToString(featuresList))
     print('----------------------------------------------')
     return
 
@@ -99,7 +103,9 @@ if __name__ == '__main__':
 
     dataProperties(df)
     dataMissing(df)
+
     print('----------- The normalised dataset -----------')
     print(dataNormalisation(df))
     print('----------------------------------------------')
+
     dataPlotting(df)
