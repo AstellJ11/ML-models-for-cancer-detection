@@ -1,9 +1,7 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 
 from sklearn.model_selection import train_test_split
 from sklearn.neural_network import MLPClassifier
-
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import metrics
 
@@ -31,11 +29,6 @@ def dataPreprocessing(dataset):
     x_train, x_test, y_train, y_test = train_test_split(x_split, y_split, test_size=0.10)
     return x_train, x_test, y_train, y_test
 
-
-# NOTE:
-# An iteration (max_iter) is a gradient update step
-# An epoch is a pass over the entire dataset
-# https://stackoverflow.com/questions/4752626/epoch-vs-iteration-when-training-neural-networks
 
 # ANN classifier with 2 hidden layers of 500 neurons each
 def ANN_classifier(x_train, x_test, y_train, y_test):
