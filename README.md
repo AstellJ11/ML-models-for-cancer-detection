@@ -1,10 +1,10 @@
 
-# Parallel Programming - Weather Analysis (CMP3752M_Assessment_01)
+# Machine Learning - Machine Learning - Cancer Classification (CMP3751M_Assessment_02)
 
 
 ## Overview
 
-A program that contains a artificial neural network (ANN) and a random forest classifier model for automatically classifying patients as healthy or cancerous, based on clincal features from cancer screenings.
+A program that contains a artificial neural network (ANN) and a random forest classifier model for automatically classifying patients as healthy or cancerous, based on clinical features from cancer screenings.
 
 
 ## Dataset Information
